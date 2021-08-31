@@ -56,5 +56,37 @@ $(document).ready(function(){
             $('.overlay, #order').fadeIn('slow');
         });
     });
+    
+   
+    function valideForm(form){
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Как звать то?",
+                    minlength: jQuery.validator.format("Не менее {0} букв!")
+                },
+                phone: "Мобилку давай!",
+                email: {
+                    required: "Электронку тоже дай!",
+                    email: "Что то врешь похоже!"
+                }
+            }
+        });
+    };
+
+    valideForm('#consultation-form');
+    valideForm('#consultation form');
+    valideForm('#order form');
 
   });
